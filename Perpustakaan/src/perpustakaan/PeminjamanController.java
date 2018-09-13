@@ -5,19 +5,21 @@
  */
 package perpustakaan;
 
-import java.awt.Dialog;
 import java.util.ArrayList;
 
-
-public class PencarianController {
+/**
+ *
+ * @author TjJul
+ */
+public class PeminjamanController {
     
-    public void showFormPencarian() {
-        Perpustakaan.formPencarian = new FormPencarian();
-        Perpustakaan.formPencarian.tampilkan(); 
+    
+    public void showFormPeminjaman() {
+        Perpustakaan.formPeminjaman = new FormPeminjaman();
+        Perpustakaan.formPeminjaman.tampilkan(); 
     }
     
-    
-    public void cariBuku(String judul) {
+     public void cariBuku(String judul) {
         BukuProvider bukuProvider = new BukuProvider();
         try {
             ArrayList<Buku> listBuku = bukuProvider.selectBuku(judul);
@@ -28,7 +30,7 @@ public class PencarianController {
                 dialogUI.setLocationRelativeTo(null);
                 dialogUI.setVisible(true);
             } 
-            else Perpustakaan.formPencarian.display(listBuku);
+            else Perpustakaan.formPeminjaman.display(listBuku);
         } catch(Exception ex) {
             DialogUI dialogUI = new DialogUI("Connection Error");
             dialogUI.pack();
@@ -36,5 +38,7 @@ public class PencarianController {
             dialogUI.setVisible(true);
         }
     }
-    
+     public Buku pinjam(ArrayList<BukuDipinjam> listBukuDipinjam){
+         
+     }
 }
