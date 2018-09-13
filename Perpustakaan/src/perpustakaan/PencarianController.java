@@ -16,7 +16,6 @@ public class PencarianController {
         Perpustakaan.formPencarian.tampilkan(); 
     }
     
-    
     public void cariBuku(String judul) {
         BukuProvider bukuProvider = new BukuProvider();
         try {
