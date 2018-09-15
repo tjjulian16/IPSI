@@ -15,6 +15,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormPeminjaman extends javax.swing.JFrame {
 
+    
+    /*atribut2 kelas
+     * 
+     */
+   
+     ArrayList<BukuDipinjam> bukuDipinjamCollection = new ArrayList<>();
+     
     /**
      * Creates new form FormPeminjaman
      */
@@ -34,16 +41,18 @@ public class FormPeminjaman extends javax.swing.JFrame {
 
         judulBuku = new javax.swing.JTextField();
         tombolCari = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        daftarBuku = new javax.swing.JTable();
         lama = new javax.swing.JTextField();
-        tambah = new javax.swing.JButton();
+        pinjam = new javax.swing.JButton();
         batal = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        daftarPinjaman = new javax.swing.JTable();
         tombolKonfirmasi = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        daftarBuku = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        daftarPinjaman = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        judulBuku.setToolTipText("");
 
         tombolCari.setText("Cari");
         tombolCari.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -52,20 +61,10 @@ public class FormPeminjaman extends javax.swing.JFrame {
             }
         });
 
-        daftarBuku.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(daftarBuku);
-
-        tambah.setText("Pinjam");
-        tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+        pinjam.setText("Pinjam");
+        pinjam.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tambahMouseClicked(evt);
+                pinjamMouseClicked(evt);
             }
         });
 
@@ -76,16 +75,6 @@ public class FormPeminjaman extends javax.swing.JFrame {
             }
         });
 
-        daftarPinjaman.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(daftarPinjaman);
-
         tombolKonfirmasi.setText("Konfirmasi");
         tombolKonfirmasi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,57 +82,96 @@ public class FormPeminjaman extends javax.swing.JFrame {
             }
         });
 
+        daftarBuku.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Judul"
+            }
+        ));
+        jScrollPane3.setViewportView(daftarBuku);
+
+        daftarPinjaman.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Judul"
+            }
+        ));
+        jScrollPane4.setViewportView(daftarPinjaman);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lama)
-                            .addComponent(tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                            .addComponent(batal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(tombolCari))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(judulBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(54, 54, 54)
+                .addComponent(tombolCari)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(judulBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lama, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(batal, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tombolKonfirmasi, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addGap(66, 66, 66))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(judulBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(judulBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tombolCari)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(tambah)
-                        .addGap(18, 18, 18)
+                        .addGap(74, 74, 74)
+                        .addComponent(pinjam)
+                        .addGap(45, 45, 45)
                         .addComponent(batal))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(28, 28, 28)
                 .addComponent(tombolKonfirmasi)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,8 +182,10 @@ public class FormPeminjaman extends javax.swing.JFrame {
         String judul = judulBuku.getText();
         Perpustakaan.controllerPeminjaman.cariBuku(judul);
     }//GEN-LAST:event_tombolCariMouseClicked
- public void display(ArrayList<Buku> bukuList) {
-        Object[] kolom = { "Judul" };
+ public void show(ArrayList<Buku> bukuList) {
+       
+     if(bukuList.size() > 0){
+          Object[] kolom = { "Judul" };
         DefaultTableModel model = new DefaultTableModel(kolom, 0);
         
         for(Buku buku : bukuList) {
@@ -164,38 +194,97 @@ public class FormPeminjaman extends javax.swing.JFrame {
         }
         
         daftarBuku.setModel(model);
+     }
+     else{
+         Perpustakaan.dialogUI.tampilkan("Buku Tidak Ditemukan");
+         
+     }
     }
-    private void tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tambahMouseClicked
-       String judul = judulBuku.getText();
-       int lamaPinjam = Integer.parseInt(lama.getText());
-        Perpustakaan.formPeminjaman.tambahBuku(judul,lamaPinjam); //judul itu harusnya bukan string, tapi kita harus ganti ke tipe data Buku (?)
-    }//GEN-LAST:event_tambahMouseClicked
-
+    private void pinjamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pinjamMouseClicked
+       
+        try{
+            int lamaPinjam = Integer.parseInt(this.lama.getText());
+        String bukuDipilih = (String) daftarBuku.getModel().getValueAt(daftarBuku.getSelectedRow(),daftarBuku.getSelectedColumn());
+        
+        Buku bukuDipinjam = new Buku(bukuDipilih);
+        tambahBuku(bukuDipinjam,lamaPinjam); 
+        }
+        catch(Exception e){
+              DialogUI dialogUI = new DialogUI("Harap diisi waktu peminjaman atau memilih buku yang ingin dipinjam");
+                dialogUI.pack();
+                dialogUI.setLocationRelativeTo(null);
+                dialogUI.setVisible(true);
+        }
+    }//GEN-LAST:event_pinjamMouseClicked
+   public void tambahBuku(Buku buku, int lama){
+   
+       if(lama > 3){
+           DialogUI dialogUI = new DialogUI("Lama peminjaman maksimal 3 hari");
+                dialogUI.pack();
+                dialogUI.setLocationRelativeTo(null);
+                dialogUI.setVisible(true);
+       }
+       else{
+       Perpustakaan.bukuDipinjam = new BukuDipinjam (buku.judul);
+         
+       Perpustakaan.bukuDipinjam.setLamaPinjam(lama);
+       
+         this.bukuDipinjamCollection.add(Perpustakaan.bukuDipinjam);
+         
+         tampilPinjaman(bukuDipinjamCollection);
+       }
+    }
     private void batalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_batalMouseClicked
-        // TODO add your handling code here:
+        if(daftarPinjaman.getSelectedColumnCount() !=0){
+            
+            int barisBukuHapus = daftarPinjaman.getSelectedRow();
+            
+            String judulBukuHapus = daftarPinjaman.getValueAt(barisBukuHapus, 0).toString();
+            BukuDipinjam bukuDihapus = new BukuDipinjam (judulBukuHapus);
+            hapusBuku(bukuDihapus);
+            
+            tampilPinjaman(bukuDipinjamCollection);
+            
+        }
+        else{
+               DialogUI dialogUI = new DialogUI("Silahkan memilih judul buku");
+                dialogUI.pack();
+                dialogUI.setLocationRelativeTo(null);
+                dialogUI.setVisible(true);
+        }
     }//GEN-LAST:event_batalMouseClicked
-
-    private void tombolKonfirmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolKonfirmasiMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tombolKonfirmasiMouseClicked
-
-    public void tambahBuku(Buku buku, int lama){
-         ArrayList<BukuDipinjam> bukuDipinjamCollection = new ArrayList<>();
-         
-         BukuDipinjam  bukuDipinjam = new BukuDipinjam(buku.judul,lama);
-         
-         bukuDipinjamCollection.add(bukuDipinjam);
-         
-          Object[] kolom = { "Judul" };
-        DefaultTableModel model = new DefaultTableModel(kolom, 0);
+  public void hapusBuku(Buku buku){
+      if(bukuDipinjamCollection.size() == 1){
+          bukuDipinjamCollection.remove(0);
+      }
+      try{
+           for( BukuDipinjam bukuDihapus : bukuDipinjamCollection){
+               if(bukuDihapus.judul.equals(buku.judul))
+               bukuDipinjamCollection.remove(bukuDihapus);
+           }
+      }
+      catch (Exception e){
+          
+      }
+    }
+   public void tampilPinjaman(ArrayList<BukuDipinjam> listBukuDipinjam){
+         Object[] kolom = { "Judul" };
+         int baris = 0;
+        DefaultTableModel model = new DefaultTableModel(kolom, baris);
         
         
-            Object[] baris = { buku.judul };
-            model.addRow(baris);
-  
-        
+           for(Buku mauDipinjam : listBukuDipinjam){
+                 model.addRow(new Object[]{mauDipinjam.judul});
+           }
+            
         daftarPinjaman.setModel(model);
     }
+  
+    private void tombolKonfirmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tombolKonfirmasiMouseClicked
+       
+           Perpustakaan.controllerPeminjaman.pinjam(bukuDipinjamCollection);
+    }//GEN-LAST:event_tombolKonfirmasiMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -235,11 +324,11 @@ public class FormPeminjaman extends javax.swing.JFrame {
     private javax.swing.JButton batal;
     private javax.swing.JTable daftarBuku;
     private javax.swing.JTable daftarPinjaman;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField judulBuku;
     private javax.swing.JTextField lama;
-    private javax.swing.JButton tambah;
+    private javax.swing.JButton pinjam;
     private javax.swing.JButton tombolCari;
     private javax.swing.JButton tombolKonfirmasi;
     // End of variables declaration//GEN-END:variables

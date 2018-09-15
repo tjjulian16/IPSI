@@ -12,8 +12,22 @@ package perpustakaan;
 public class BukuDipinjam extends Buku{
     private int lama;
     
-    public BukuDipinjam(String judul,int lamaPinjam){
+    public BukuDipinjam(String judul){
         super(judul);
-        this.lama = lamaPinjam;
+        
     }
+    
+    public int getLamaPinjam(){
+        return lama;
+    }
+    
+    public void setLamaPinjam(int lama){
+        this.lama = lama;
+    }
+    
+    public String getJudulBukuDipinjam(){
+        return super.judul;
+    }
+    
+    
 }

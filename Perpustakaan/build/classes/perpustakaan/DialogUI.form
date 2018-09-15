@@ -30,7 +30,7 @@
                       <Component id="jLabelMessage" min="-2" pref="351" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
                       <Component id="jButtonOK" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>

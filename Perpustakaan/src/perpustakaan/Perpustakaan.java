@@ -13,8 +13,11 @@ public class Perpustakaan {
     public static PeminjamanController controllerPeminjaman;
     public static FormPeminjaman formPeminjaman;
     public static FormPencarian formPencarian;
+    public static BukuDipinjam bukuDipinjam;
     public static DialogUI dialogUI;
     public static BukuProvider bukuProvider;
+    public static Peminjaman peminjaman;
+    public static PeminjamanManager peminjamanManager;
     
     /**
      * @param args the command line arguments

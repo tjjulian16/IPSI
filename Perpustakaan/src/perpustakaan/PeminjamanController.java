@@ -30,7 +30,7 @@ public class PeminjamanController {
                 dialogUI.setLocationRelativeTo(null);
                 dialogUI.setVisible(true);
             } 
-            else Perpustakaan.formPeminjaman.display(listBuku);
+            else Perpustakaan.formPeminjaman.show(listBuku);
         } catch(Exception ex) {
             DialogUI dialogUI = new DialogUI("Connection Error");
             dialogUI.pack();
@@ -38,7 +38,15 @@ public class PeminjamanController {
             dialogUI.setVisible(true);
         }
     }
-     public Buku pinjam(ArrayList<BukuDipinjam> listBukuDipinjam){
-         
-     }
+    public void pinjam(ArrayList<BukuDipinjam> bukuDipinjam){
+        Perpustakaan.peminjamanManager  = new PeminjamanManager();
+        Perpustakaan.dialogUI = new DialogUI();
+        
+        if(Perpustakaan.peminjamanManager.save(bukuDipinjam)){
+              DialogUI dialogUI = new DialogUI("Peminjaman Berhasil");
+                dialogUI.pack();
+                dialogUI.setLocationRelativeTo(null);
+                dialogUI.setVisible(true);
+        }
+    }
 }

@@ -11,6 +11,7 @@ public class DialogUI extends javax.swing.JFrame {
     /**
      * Creates new form DialogUI
      */
+   
     public DialogUI() {
         initComponents();
     }
@@ -20,7 +21,7 @@ public class DialogUI extends javax.swing.JFrame {
         jLabelMessage.setText(message);
     }
     
-    public void setMessage(String message) {
+    public void tampilkan(String message) {
         jLabelMessage.setText(message);
     }
 
@@ -58,7 +59,7 @@ public class DialogUI extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jLabelMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
+                        .addGap(174, 174, 174)
                         .addComponent(jButtonOK)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
